@@ -29,3 +29,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#ignore coverage
+coverage/
+
+echo coverage >> .gitignore
