@@ -23,9 +23,6 @@ RSpec.describe Project, type: :model do
     end
 end
 
-
-require "rails_helper"
-
 RSpec.describe Project, type: :model do
   # ...
 

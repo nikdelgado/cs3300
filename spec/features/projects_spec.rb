@@ -1,9 +1,26 @@
 require 'rails_helper'
+require 'factory_bot_rails'
 
 RSpec.feature "Projects", type: :feature do
+
+  
+
   context "Create new project" do
     before(:each) do
       visit new_project_path
+
+      # Create user w/ factory
+      steve = create(:user)
+      
+      # fill in the log in form
+      within("form") do
+        fill_in "Email", with: steve.email
+        fill_in "Password", with: steve.password
+      end
+
+      # click the log in button
+      click_button "Log in"
+
       within("form") do
         fill_in "Title", with: "Test title"
       end
@@ -22,6 +39,23 @@ RSpec.feature "Projects", type: :feature do
   end
 
   context "Update project" do
+    before(:each) do   
+      
+      visit new_project_path
+
+      # Create user w/ factory
+      steve = create(:user)
+    
+        # fill in the log in form
+      within("form") do
+        fill_in "Email", with: steve.email
+        fill_in "Password", with: steve.password
+        end
+  
+        # click the log in button
+        click_button "Log in"
+      
+    end
     let(:project) { Project.create(title: "Test title", description: "Test content") }
     before(:each) do
       visit edit_project_path(project)
@@ -45,6 +79,24 @@ RSpec.feature "Projects", type: :feature do
   end
 
   context "Remove existing project" do
+    before(:each) do   
+      
+      visit new_project_path
+
+      # Create user w/ factory
+      steve = create(:user)
+    
+        # fill in the log in form
+      within("form") do
+        fill_in "Email", with: steve.email
+        fill_in "Password", with: steve.password
+        end
+  
+        # click the log in button
+        click_button "Log in"
+      
+    end
+    
     let!(:project) { Project.create(title: "Test title", description: "Test content") }
     scenario "remove project" do
       visit projects_path
