@@ -79,5 +79,5 @@ gem 'mini_racer'
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'capybara'
-  gem 'simplecov', require:false
+  gem 'simplecov', require:false, group: :test
 end
