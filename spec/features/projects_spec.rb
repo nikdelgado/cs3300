@@ -28,8 +28,9 @@ RSpec.feature "Projects", type: :feature do
 
     scenario "should be successful" do
       fill_in "Description", with: "Test description"
+      # attach_file "Image", "/root/cs3300/app/assets/images/Screen Shot 2022-04-28 at 3.56.05 PM.png"
       click_button "Create Project"
-      expect(page).to have_content("Project was successfully created")
+      expect(page).to have_content("Test title")
     end
 
     scenario "should fail" do
@@ -64,9 +65,10 @@ RSpec.feature "Projects", type: :feature do
     scenario "should be successful" do
       within("form") do
         fill_in "Description", with: "New description content"
+        # attach_file "Image", "/root/cs3300/app/assets/images/Screen Shot 2022-04-28 at 3.56.05 PM.png"
       end
       click_button "Update Project"
-      expect(page).to have_content("Project was successfully updated")
+      expect(page).to have_content("Project was successfully updated.")
     end
 
     scenario "should fail" do
@@ -97,7 +99,7 @@ RSpec.feature "Projects", type: :feature do
       
     end
     
-    let!(:project) { Project.create(title: "Test title", description: "Test content") }
+    let!(:project) { Project.create(title: "Test title", description: "Test content")}
     scenario "remove project" do
       visit projects_path
       click_link "Destroy"
